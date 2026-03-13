@@ -23,7 +23,7 @@ case "${VARIANT_ID:-}" in
     IMPORTANT_PACKAGES+=(
         kwin
         plasma-desktop
-        sddm
+        plasma-login-manager
         plasma-discover
     )
     ;;
