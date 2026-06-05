@@ -24,6 +24,9 @@ dnf5 config-manager setopt fedora-cisco-openh264.enabled=0
 ## nvidia install steps
 dnf5 install -y "${AKMODNV_PATH}"/ublue-os/ublue-os-nvidia-addons-*.rpm
 
+# Remove sslcacert from nvidia-container-toolkit.repo
+sed -i "/^sslcacert=/d" /etc/yum.repos.d/nvidia-container-toolkit.repo
+
 # Install MULTILIB packages from negativo17-multimedia prior to disabling repo
 
 MULTILIB=(
@@ -75,9 +78,9 @@ fi
 
 dnf5 install -y \
     libnvidia-fbc \
-    libnvidia-ml.i686 \
     libva-nvidia-driver \
     nvidia-driver \
+    nvidia-driver-common.i686 \
     nvidia-driver-cuda \
     nvidia-driver-cuda-libs.i686 \
     nvidia-driver-libs.i686 \
